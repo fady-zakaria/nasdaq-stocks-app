@@ -1,25 +1,16 @@
-import {View, Text, FlatList, StyleSheet, ListRenderItem} from 'react-native';
-import React, {FC, useEffect, useMemo, useState} from 'react';
+import { View, FlatList, StyleSheet } from 'react-native';
+import React, { FC, useEffect, useState } from 'react';
 import TickerBox from '../TickerBox/TickerBox';
-import { QueryParam, useGetStocks } from '../../hooks/useGetStocks';
-import { Ticker, TickerRes } from '../../types/stocks';
+import { useGetStocks } from '../../hooks/useGetStocks';
+import { Ticker } from '../../types/stocks';
 import Loader from '../Loader/Loader';
 
 interface Iprops {
   searchQuery: string;
 }
 
-const StockList: FC<Iprops> = ({searchQuery}) => {
-  // const getParam = () => {
-  //   let param: QueryParam = { 
-  //     limit: 2,
-  //   }
-  //   if(searchQuery && searchQuery.length > 2){
-  //     param.search = searchQuery;
-  //   }
-  //   return param;
-  // }
-  
+const StockList: FC<Iprops> = ({ searchQuery }) => {
+
   const {
     data,
     refetch,
@@ -34,10 +25,6 @@ const StockList: FC<Iprops> = ({searchQuery}) => {
     search: searchQuery && searchQuery.length > 2 ? searchQuery : '',
   });
 
-  // {
-  //   limit: 6,
-  //   search: searchQuery && searchQuery.length > 2 ? searchQuery : '',
-  // }
   const [queryRes, setQueryRes] = useState<Ticker[]>([]);
 
   useEffect(() => {
@@ -51,57 +38,33 @@ const StockList: FC<Iprops> = ({searchQuery}) => {
     setQueryRes(newArray);
   }, [data]);
 
-  // const stocksList = useMemo(() => {
-  //   // console.log("data",data)
-  //   if (data) {
-  //     let newArray = [];
-  //     data?.pages.map(item => {
-  //     if (item) {
-  //       newArray = [...newArray, ...item?.data?.results];
-  //     }
-  //   });
-  //   return newArray;
-  //   }
-  //   return [];
-  // }, [data]);
-
-  // console.log("stocksList", stocksList)
-
   const renderItem = ({ item }) => {
-    // console.log("item", item)
     return (
-      <TickerBox name={item.name} ticker={item.ticker}/>
+      <TickerBox name={item.name} ticker={item.ticker} />
     )
   }
 
   return (
     <View>
-      {isRefetching || isLoading ? <Loader />: (
+      {isRefetching || isLoading ? <Loader /> : (
         <FlatList
-            numColumns={2}
-            data={queryRes}
-            renderItem={renderItem}
-            showsVerticalScrollIndicator={false}
-            keyExtractor={(item,index) => (item.ticker + index).toString()}
-            columnWrapperStyle={styles.ContentContainer}
-            // onEndReached={() => {
-
-            // }}
-            onEndReached={() => !isFetching && (setTimeout(() => {
-              fetchNextPage();
-            }, 1000))}
-            // onEndReachedThreshold={0.9}
-            // onRefresh={() => refetch()}
-            // refreshing={isRefetching}
-            ListFooterComponent={
-              isFetchingNextPage ? (
-                <Loader />
-                ) : null
-              }
-            testID="stocksList"
+          numColumns={2}
+          data={queryRes}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item, index) => (item.ticker + index).toString()}
+          columnWrapperStyle={styles.ContentContainer}
+          onEndReached={() => !isFetching && (setTimeout(() => {
+            fetchNextPage();
+          }, 1000))}
+          ListFooterComponent={
+            isFetchingNextPage ? (
+              <Loader />
+            ) : null
+          }
+          testID="stocksList"
         />
       )}
-      {/* {isFetchingNextPage && <Loader />} */}
     </View>
   );
 };
@@ -109,8 +72,8 @@ const StockList: FC<Iprops> = ({searchQuery}) => {
 export default StockList;
 
 const styles = StyleSheet.create({
-    ContentContainer: {
-      justifyContent: 'space-between',
-      paddingVertical: 5,
-    },
-  });
+  ContentContainer: {
+    justifyContent: 'space-between',
+    paddingVertical: 5,
+  },
+});

@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import {Alert} from 'react-native';
+import { Alert } from 'react-native';
 
 export const httpClient: AxiosInstance = axios.create({
   baseURL: process.env.EXPO_PUBLIC_API_URL,
@@ -24,7 +24,7 @@ const errorInterceptor = async (error: any) => {
   if (response && response.status === 429) {
     await new Promise(resolve => setTimeout(resolve, 1000));
     return httpClient(config);
-  } else{
+  } else {
     Alert.alert('Error', error.message);
     return Promise.reject(error);
   }

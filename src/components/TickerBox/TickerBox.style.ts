@@ -4,7 +4,7 @@ import { Colors } from "../../utils/Colors";
 const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
-    container:{
+    container: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
@@ -21,8 +21,8 @@ export const styles = StyleSheet.create({
     },
     tickerText: {
         color: Colors.primaryText,
-        marginVertical:10,
-        fontWeight:'700',
+        marginVertical: 10,
+        fontWeight: '700',
         textAlign: "center",
     },
     stockName: {

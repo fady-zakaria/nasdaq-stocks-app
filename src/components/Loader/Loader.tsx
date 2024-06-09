@@ -1,14 +1,18 @@
-import {View, ActivityIndicator} from 'react-native';
-import React, {FC} from 'react';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import React, { FC } from 'react';
 
-interface Iprops {}
-
-const Loader: FC<Iprops> = ({}) => {
+const Loader: FC = () => {
   return (
-    <View style={{marginVertical: 15}}>
+    <View style={styles.loading}>
       <ActivityIndicator size={'small'} color={'blue'} />
     </View>
   );
 };
 
 export default Loader;
+
+const styles = StyleSheet.create({
+  loading: {
+    marginVertical: 15
+  },
+})

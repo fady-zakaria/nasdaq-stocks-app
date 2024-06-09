@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { Colors } from "../../utils/Colors";
 
 export const styles = StyleSheet.create({
-    container:{
+    container: {
         borderWidth: 2,
         borderColor: Colors.grey,
         borderRadius: 50,
@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
         paddingStart: 15,
         color: Colors.secondaryText,
         marginBottom: 15,
-        // marginHorizontal:15,
         fontSize: 15,
         backgroundColor: Colors.primaryColor,
     }

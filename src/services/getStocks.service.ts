@@ -1,18 +1,14 @@
 import { QueryParam } from '../hooks/useGetStocks';
-import {httpClient} from './httpClient';
+import { httpClient } from './httpClient';
 
-const getStocks = (pageParam: string, params: QueryParam) =>{
-  // const callingApI = `?limit=${params?.limit}` + `&search=${params?.searchText}` 
-  // console.log("callingApI", callingApI)
-  // console.log("pageParam", pageParam)
-  // console.log("params", params)
+const getStocks = async (pageParam: string, params: QueryParam) => {
   let url = '/v3/reference/tickers';
-  if(pageParam !== ''){
+  if (pageParam !== '') {
     url = url + pageParam?.split("tickers")[1];
     return httpClient.get(url).then(response => response);
   } else {
-    return httpClient.get(url, {params}).then(response => response);
-  } 
+    return httpClient.get(url, { params }).then(response => response);
+  }
 }
 
 export default getStocks;
