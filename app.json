@@ -15,16 +15,29 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fadyzakaria.NasdaqStocks"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.fadyzakaria.NasdaqStocks"
     },
     "web": {
       "favicon": "./assets/nasdaqLogo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "370c64d3-80f1-4938-beb6-3c087cdc07a4"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/370c64d3-80f1-4938-beb6-3c087cdc07a4"
     }
   }
 }
