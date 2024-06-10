@@ -1,6 +1,8 @@
 # Nasdaq Market Stocks App
 React Native Expo App
 
+- I used the expo sdk@49 version to clarify the code structure to be similar to the React Native CLI structure
+
 ### Video Demo
 
 Drive Link: [**Nasdaq App Video Demo**](https://drive.google.com/file/d/1Qab1ei3AUYgWLKrG616LZFAZFmrnkmkR/view?usp=sharing) 
