@@ -5,8 +5,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface Iprops {
   src?: ImageSourcePropType;
-  name?: string;
-  ticker?: string;
+  name: string;
+  ticker: string;
 }
 
 const TickerBox: FC<Iprops> = ({ src, name, ticker }) => {
@@ -14,7 +14,7 @@ const TickerBox: FC<Iprops> = ({ src, name, ticker }) => {
     <TouchableOpacity style={styles.container}>
       <Image
         style={styles.img}
-        source={{ uri: 'https://picsum.photos/200' }}
+        source={src ?? { uri: 'https://picsum.photos/200' }}
       />
       <Text style={styles.tickerText} numberOfLines={2}>
         {ticker}

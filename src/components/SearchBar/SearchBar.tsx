@@ -22,6 +22,7 @@ const SearchBar: FC<Iprops> = ({ setSearchQuery }) => {
       value={text}
       placeholderTextColor={Colors.secondaryText}
       autoCapitalize='none'
+      testID='search'
     />
   );
 };

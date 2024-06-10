@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StockList renders correctly with given props 1`] = `
+<View>
+  <RCTScrollView
+    ListFooterComponent={null}
+    data={[]}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onEndReached={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsVerticalScrollIndicator={false}
+    stickyHeaderIndices={[]}
+    testID="stocksList"
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View />
+  </RCTScrollView>
+</View>
+`;
+
+exports[`StockList renders the loader when loading 1`] = `
+<View>
+  <View
+    style={
+      {
+        "marginVertical": 15,
+      }
+    }
+    testID="loader"
+  >
+    <ActivityIndicator
+      color="blue"
+      size="small"
+    />
+  </View>
+</View>
+`;

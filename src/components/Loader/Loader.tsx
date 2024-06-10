@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 const Loader: FC = () => {
   return (
-    <View style={styles.loading}>
+    <View style={styles.loading} testID={'loader'}>
       <ActivityIndicator size={'small'} color={'blue'} />
     </View>
   );

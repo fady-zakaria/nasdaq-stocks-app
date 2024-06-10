@@ -6,7 +6,7 @@ import { Ticker } from '../../types/stocks';
 import Loader from '../Loader/Loader';
 
 interface Iprops {
-  searchQuery: string;
+  searchQuery?: string;
 }
 
 const StockList: FC<Iprops> = ({ searchQuery }) => {
@@ -29,7 +29,6 @@ const StockList: FC<Iprops> = ({ searchQuery }) => {
 
   useEffect(() => {
     let newArray = [];
-    // console.log("data",data)
     data?.pages.map(item => {
       if (item) {
         newArray = [...newArray, ...item?.data?.results];
