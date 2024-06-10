@@ -1,9 +1,10 @@
-import { View, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
 import React, { FC, useEffect, useState } from 'react';
 import TickerBox from '../TickerBox/TickerBox';
 import { useGetStocks } from '../../hooks/useGetStocks';
 import { Ticker } from '../../types/stocks';
 import Loader from '../Loader/Loader';
+import { styles } from './StockList.style';
 
 interface Iprops {
   searchQuery?: string;
@@ -43,6 +44,14 @@ const StockList: FC<Iprops> = ({ searchQuery }) => {
     )
   }
 
+  const emptyList = () => {
+    return (
+      <View style={styles.emptyContainer}>
+        <Text style={styles.emptyText}>No Stocks</Text>
+      </View>
+    );
+  };
+
   return (
     <View>
       {isRefetching || isLoading ? <Loader /> : (
@@ -53,6 +62,7 @@ const StockList: FC<Iprops> = ({ searchQuery }) => {
           showsVerticalScrollIndicator={false}
           keyExtractor={(item, index) => (item.ticker + index).toString()}
           columnWrapperStyle={styles.ContentContainer}
+          ListEmptyComponent={emptyList()}
           onEndReached={() => !isFetching && (setTimeout(() => {
             fetchNextPage();
           }, 1000))}
@@ -69,10 +79,3 @@ const StockList: FC<Iprops> = ({ searchQuery }) => {
 };
 
 export default StockList;
-
-const styles = StyleSheet.create({
-  ContentContainer: {
-    justifyContent: 'space-between',
-    paddingVertical: 5,
-  },
-});

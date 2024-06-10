@@ -22,7 +22,7 @@ const errorInterceptor = async (error: any) => {
   const { config, response } = error;
 
   if (response && response.status === 429) {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
     return httpClient(config);
   } else {
     Alert.alert('Error', error.message);
